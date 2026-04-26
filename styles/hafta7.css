@@ -1,0 +1,157 @@
+/* ===== HAFTA 7 – Özel CSS ===== */
+
+/* ---------- CSS Değişkenleri (Aydınlık Mod) ---------- */
+:root {
+    --bg-body: #f8f9fa;
+    --bg-hero: linear-gradient(135deg, #0d6efd 0%, #6f42c1 100%);
+    --bg-form-section: #eef2ff;
+    --bg-footer: #1e1e2e;
+    --text-footer: #ced4da;
+    --card-bg: #ffffff;
+    --navbar-bg: rgba(255, 255, 255, 0.95);
+    --navbar-color: #212529;
+    --transition: 0.35s ease;
+}
+
+/* ---------- Karanlık Mod ---------- */
+body.dark-mode {
+    --bg-body: #121212;
+    --bg-form-section: #1a1a2e;
+    --bg-footer: #0a0a14;
+    --card-bg: #1e1e2e;
+    --navbar-bg: rgba(20, 20, 35, 0.97);
+    --navbar-color: #e0e0e0;
+    background-color: #121212 !important;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card {
+    background-color: #1e1e2e !important;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card-text,
+body.dark-mode .text-muted {
+    color: #a0aec0 !important;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #2d2d44;
+    color: #e0e0e0;
+    border-color: #444466;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #888;
+}
+
+body.dark-mode .form-check-label {
+    color: #ccc;
+}
+
+body.dark-mode .form-section {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode #navbar {
+    background: rgba(20, 20, 35, 0.97) !important;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .footer-section {
+    background-color: #0a0a14;
+}
+
+/* ---------- Genel ---------- */
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-body);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+/* ---------- Navbar ---------- */
+#navbar {
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+    transition: background var(--transition);
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+/* ---------- Hero ---------- */
+.hero-section {
+    background: var(--bg-hero);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    pointer-events: none;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+}
+
+.hero-accent {
+    color: #ffc107;
+}
+
+.hero-sub {
+    opacity: 0.88;
+}
+
+/* ---------- Kart Hover ---------- */
+.card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+}
+
+/* ---------- Form Section ---------- */
+.form-section {
+    background-color: var(--bg-form-section);
+    transition: background-color var(--transition);
+}
+
+/* ---------- Sonuç Kartı ---------- */
+.sonuc-kart {
+    border-left: 5px solid #0d6efd;
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Footer ---------- */
+.footer-section {
+    background-color: var(--bg-footer);
+    color: var(--text-footer);
+    transition: background-color var(--transition);
+}

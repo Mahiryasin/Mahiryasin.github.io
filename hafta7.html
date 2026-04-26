@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap ve JavaScript ile hazırlanmış etkileşimli etkinlik kayıt sayfası - Web Programlama Hafta 7">
+    <title>Hafta 7 – Etkinlik Kayıt | Mahir Yasin</title>
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Özel CSS -->
+    <link rel="stylesheet" href="styles/hafta7.css">
+</head>
+<body id="sayfa">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm" id="navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-code-slash me-1"></i>Mahir Yasin
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Hakkımda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="hafta7.html">Hafta 7</a></li>
+                    <li class="nav-item">
+                        <button id="temaBtn" class="btn btn-sm btn-outline-warning ms-2 fw-semibold" onclick="temaDegistir()">
+                            <i class="bi bi-moon-stars-fill me-1"></i>Karanlık Mod
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-section text-center py-5" id="hero">
+        <div class="container py-4">
+            <span class="badge text-bg-warning mb-3 px-3 py-2 fs-6 rounded-pill">
+                <i class="bi bi-calendar-event me-1"></i>2025 Yaz Etkinlikleri
+            </span>
+            <h1 class="display-4 fw-bold mb-3">Etkinlik Kayıt <span class="hero-accent">Platformu</span></h1>
+            <p class="lead mb-4 hero-sub">
+                Bootstrap &amp; JavaScript ile hazırlanmış etkileşimli etkinlik kayıt sistemi.<br>
+                Formu doldur, anında başvuru özetini gör!
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#form-bolumu" class="btn btn-primary btn-lg shadow px-4">
+                    <i class="bi bi-pencil-square me-2"></i>Hemen Kaydol
+                </a>
+                <a href="#etkinlikler" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="bi bi-search me-2"></i>Etkinlikleri Gör
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ETKİNLİK KARTLARI -->
+    <section class="py-5" id="etkinlikler">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-2">Öne Çıkan Etkinlikler</h2>
+            <p class="text-center text-muted mb-5">3 farklı kategoride ilgi çekici etkinlik seni bekliyor.</p>
+            <div class="row g-4">
+
+                <!-- Kart 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 card-hover">
+                        <div class="card-img-top-custom bg-primary-subtle d-flex align-items-center justify-content-center rounded-top-4" style="height:130px;">
+                            <i class="bi bi-laptop display-3 text-primary"></i>
+                        </div>
+                        <div class="card-body p-4">
+                            <span class="badge bg-primary mb-2">Teknoloji</span>
+                            <h3 class="card-title h5 fw-bold">Web Geliştirme Bootcamp</h3>
+                            <p class="card-text text-muted small">
+                                3 günlük yoğun eğitimle HTML, CSS, Bootstrap ve JavaScript temellerini öğren. Sertifika verilecektir.
+                            </p>
+                            <ul class="list-unstyled small text-muted mb-3">
+                                <li><i class="bi bi-calendar3 me-2 text-primary"></i>15 Temmuz 2025</li>
+                                <li><i class="bi bi-geo-alt me-2 text-primary"></i>İstanbul – Online</li>
+                                <li><i class="bi bi-people me-2 text-primary"></i>Kapasite: 50 kişi</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 px-4 pb-4">
+                            <a href="#form-bolumu" class="btn btn-primary w-100 rounded-pill">Kayıt Ol</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kart 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 card-hover">
+                        <div class="card-img-top-custom bg-success-subtle d-flex align-items-center justify-content-center rounded-top-4" style="height:130px;">
+                            <i class="bi bi-mic-fill display-3 text-success"></i>
+                        </div>
+                        <div class="card-body p-4">
+                            <span class="badge bg-success mb-2">Kariyer</span>
+                            <h3 class="card-title h5 fw-bold">Yazılım Kariyer Zirvesi</h3>
+                            <p class="card-text text-muted small">
+                                Sektörün önde gelen yazılımcılarının konuşmacı olduğu, networking fırsatları sunan büyük kariyer etkinliği.
+                            </p>
+                            <ul class="list-unstyled small text-muted mb-3">
+                                <li><i class="bi bi-calendar3 me-2 text-success"></i>22 Ağustos 2025</li>
+                                <li><i class="bi bi-geo-alt me-2 text-success"></i>Ankara – Hibrit</li>
+                                <li><i class="bi bi-people me-2 text-success"></i>Kapasite: 200 kişi</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 px-4 pb-4">
+                            <a href="#form-bolumu" class="btn btn-success w-100 rounded-pill">Kayıt Ol</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kart 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 card-hover">
+                        <div class="card-img-top-custom bg-warning-subtle d-flex align-items-center justify-content-center rounded-top-4" style="height:130px;">
+                            <i class="bi bi-trophy-fill display-3 text-warning"></i>
+                        </div>
+                        <div class="card-body p-4">
+                            <span class="badge bg-warning text-dark mb-2">Yarışma</span>
+                            <h3 class="card-title h5 fw-bold">Hackathon 2025</h3>
+                            <p class="card-text text-muted small">
+                                48 saatlik kodlama maratonunda takımınla yarış, yenilikçi projeler üret ve büyük ödüller kazan!
+                            </p>
+                            <ul class="list-unstyled small text-muted mb-3">
+                                <li><i class="bi bi-calendar3 me-2 text-warning"></i>5-7 Eylül 2025</li>
+                                <li><i class="bi bi-geo-alt me-2 text-warning"></i>İzmir – Yüz yüze</li>
+                                <li><i class="bi bi-people me-2 text-warning"></i>Kapasite: 100 kişi</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 px-4 pb-4">
+                            <a href="#form-bolumu" class="btn btn-warning w-100 rounded-pill text-dark">Kayıt Ol</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KAYIT FORMU -->
+    <section class="py-5 form-section" id="form-bolumu">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow rounded-4 p-4 p-md-5">
+                        <h2 class="fw-bold mb-1 text-center"><i class="bi bi-person-plus-fill me-2 text-primary"></i>Etkinlik Kayıt Formu</h2>
+                        <p class="text-center text-muted mb-4">Aşağıdaki formu eksiksiz doldurun, başvurunuz onaylansın.</p>
+
+                        <!-- Uyarı / Hata alanı -->
+                        <div id="uyariAlani" class="alert alert-danger d-none" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <span id="uyariMesaji"></span>
+                        </div>
+
+                        <form id="kayitFormu" novalidate>
+                            <div class="row g-3">
+
+                                <!-- Ad Soyad -->
+                                <div class="col-md-6">
+                                    <label for="adSoyad" class="form-label fw-semibold">Ad Soyad <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control rounded-3" id="adSoyad" placeholder="Adınızı giriniz">
+                                </div>
+
+                                <!-- E-posta -->
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-semibold">E-posta <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control rounded-3" id="email" placeholder="ornek@email.com">
+                                </div>
+
+                                <!-- Telefon -->
+                                <div class="col-md-6">
+                                    <label for="telefon" class="form-label fw-semibold">Telefon <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control rounded-3" id="telefon" placeholder="05XX XXX XX XX">
+                                </div>
+
+                                <!-- Katılım Türü -->
+                                <div class="col-md-6">
+                                    <label for="katilimTuru" class="form-label fw-semibold">Katılım Türü <span class="text-danger">*</span></label>
+                                    <select class="form-select rounded-3" id="katilimTuru">
+                                        <option value="">-- Seçiniz --</option>
+                                        <option value="Yüz Yüze">Yüz Yüze</option>
+                                        <option value="Online">Online</option>
+                                        <option value="Hibrit">Hibrit</option>
+                                    </select>
+                                </div>
+
+                                <!-- Etkinlik Seçimi -->
+                                <div class="col-12">
+                                    <label for="etkinlikSec" class="form-label fw-semibold">Etkinlik <span class="text-danger">*</span></label>
+                                    <select class="form-select rounded-3" id="etkinlikSec">
+                                        <option value="">-- Etkinlik Seçiniz --</option>
+                                        <option value="Web Geliştirme Bootcamp">Web Geliştirme Bootcamp (15 Tem 2025)</option>
+                                        <option value="Yazılım Kariyer Zirvesi">Yazılım Kariyer Zirvesi (22 Ağu 2025)</option>
+                                        <option value="Hackathon 2025">Hackathon 2025 (5-7 Eyl 2025)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Hakkında -->
+                                <div class="col-12">
+                                    <label for="hakkinda" class="form-label fw-semibold">Kendiniz Hakkında</label>
+                                    <textarea class="form-control rounded-3" id="hakkinda" rows="3" placeholder="Kısa bir tanıtım yapınız (opsiyonel)..."></textarea>
+                                </div>
+
+                                <!-- KVKK -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="kvkk">
+                                        <label class="form-check-label small" for="kvkk">
+                                            Kişisel verilerimin işlenmesine ilişkin <a href="#" class="text-primary">KVKK Aydınlatma Metni</a>'ni okudum ve onaylıyorum. <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Gönder butonu -->
+                                <div class="col-12 d-grid mt-2">
+                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">
+                                        <i class="bi bi-send-fill me-2"></i>Başvuruyu Gönder
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SONUÇ ALANI -->
+    <section class="py-4" id="sonuc-bolumu" style="display:none !important;">
+    </section>
+    <div id="sonucAlani" class="container mb-5" style="display:none;"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer-section py-4 text-center">
+        <div class="container">
+            <p class="mb-1 fw-semibold"><i class="bi bi-code-slash me-1"></i>Mahir Yasin Başkes</p>
+            <p class="text-muted small mb-2">Web Programlama – Hafta 7 Laboratuvar Uygulaması &copy; 2025</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="index.html" class="text-muted small text-decoration-none"><i class="bi bi-house me-1"></i>Ana Sayfa</a>
+                <a href="about.html" class="text-muted small text-decoration-none"><i class="bi bi-person me-1"></i>Hakkımda</a>
+                <a href="contact.html" class="text-muted small text-decoration-none"><i class="bi bi-envelope me-1"></i>İletişim</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Hafta 7 JS -->
+    <script src="scripts/hafta7.js"></script>
+</body>
+</html>
