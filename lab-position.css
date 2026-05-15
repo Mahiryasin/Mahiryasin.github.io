@@ -1,0 +1,155 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 150vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: gray;
+    width: 50%;
+    height: 90%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 500px;
+    height: 400px;
+    background-color: rgb(31, 136, 171);
+    border-radius: 20px;
+    position: relative;
+}
+
+.page-button:nth-child(1) {
+    animation-name: button-animation;
+    animation-delay: 0.3s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: fixed;
+    top: 80px;
+    left: 400px;
+    background-color: blue;
+    color: white;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.page-button:nth-child(2) {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background-color: purple;
+    width: 120px;
+    height: 50px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.text {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 50%;
+}
+
+.content button:nth-child(1) {
+    z-index: 1;
+    position: absolute;
+    top: 33px;
+    left: 20px;
+    color: black;
+    background-color: bisque;
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.content button:nth-child(2) {
+    animation-name: button-animation;
+    animation-delay: 0.3s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+
+.content button:nth-child(3) {
+    background-color: white;
+    position: absolute;
+    left: 190px;
+    top: 250px;
+    width: 140px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+
+.content button:nth-child(4) {
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    background-color: bisque;
+    width: 90px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.content button:nth-child(2):hover {
+    transition: all 0.7s ease;
+    background-color: yellow;
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+
+.content button:nth-child(3):hover {
+    transition: all 0.7s ease;
+    background-color: brown;
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+
+.content button:nth-child(1):hover {
+    transition: all 0.7s ease;
+    background-color: chocolate;
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+
+.content:hover {
+    transition: all 0.7s ease;
+    cursor: pointer;
+    transform: translateY(-20px);
+}
+
+@keyframes button-animation {
+    0% {
+        transform: translateX(-30px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}

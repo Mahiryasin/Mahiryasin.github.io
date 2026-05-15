@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Uygulamalar (Not Hesaplama & Birim Dönüştürücü)</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .app-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #f1f5f9;
+            text-align: center;
+            display: none;
+        }
+
+        .result-box.success {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .result-box.danger {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .result-box.info {
+            background-color: #e0f2fe;
+            color: #075985;
+            border: 1px solid #bae6fd;
+        }
+
+        .result-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-detail {
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .unit-flex {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .unit-flex .form-group {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Web Programlama Uygulamaları</h1>
+    <p>Not Hesaplama ve Birim Dönüştürücü</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="uygulamalar.html">Uygulamalar</a></li>
+    </ul>
+</nav>
+
+<main>
+    <p style="text-align:center; font-size: 1.1rem;">Aşağıdaki panellerden ilgili uygulamaları test edebilirsiniz.</p>
+
+    <div class="app-container">
+        <!-- Uygulama 1: Not Hesaplama -->
+        <div class="app-card">
+            <h2>🎓 Not Hesaplama Sistemi</h2>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">Öğrenci bilgilerini ve notlarını girerek geçme durumunu hesaplayın.</p>
+            
+            <div class="form-group">
+                <label for="adSoyad">Ad Soyad</label>
+                <input type="text" id="adSoyad" placeholder="Örn: Ali Yılmaz">
+            </div>
+            <div class="unit-flex">
+                <div class="form-group">
+                    <label for="vizeNotu">Vize Notu (%40)</label>
+                    <input type="text" id="vizeNotu" placeholder="0-100">
+                </div>
+                <div class="form-group">
+                    <label for="finalNotu">Final Notu (%60)</label>
+                    <input type="text" id="finalNotu" placeholder="0-100">
+                </div>
+            </div>
+            
+            <button class="btn-submit" onclick="hesaplaNot()">Hesapla</button>
+
+            <div id="notSonuc" class="result-box">
+                <div class="result-title" id="notOzet"></div>
+                <p class="result-detail" id="notDetay"></p>
+            </div>
+        </div>
+
+        <!-- Uygulama 2: Birim Dönüştürücü -->
+        <div class="app-card">
+            <h2>🔄 Birim Dönüştürücü</h2>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">Mühendislik birimleri arasında hızlı dönüşüm yapın.</p>
+
+            <div class="form-group">
+                <label for="donusumTipi">Dönüşüm Türü</label>
+                <select id="donusumTipi" onchange="turDegisti()">
+                    <option value="uzunluk">Uzunluk (Metre, Kilometre, Mil)</option>
+                    <option value="sicaklik">Sıcaklık (Celsius, Fahrenheit, Kelvin)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="girisDegeri">Değer Giriniz</label>
+                <input type="text" id="girisDegeri" placeholder="Örn: 100">
+            </div>
+
+            <div class="unit-flex">
+                <div class="form-group">
+                    <label for="birimKaynak">Hangi Birimden</label>
+                    <select id="birimKaynak"></select>
+                </div>
+                <div class="form-group">
+                    <label for="birimHedef">Hangi Birime</label>
+                    <select id="birimHedef"></select>
+                </div>
+            </div>
+
+            <button class="btn-submit" onclick="hesaplaDonusum()">Dönüştür</button>
+
+            <div id="donusumSonuc" class="result-box info">
+                <div class="result-title">Sonuç</div>
+                <p class="result-detail" id="donusumDetay"></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Web Programlama Dersi Uygulamaları</p>
+</footer>
+
+<script src="scripts/uygulamalar.js"></script>
+</body>
+</html>
